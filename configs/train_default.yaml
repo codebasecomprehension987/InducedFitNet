@@ -1,0 +1,41 @@
+# InducedFitNet default training configuration
+
+model:
+  d_prot_in:      27      # residue feature dimension (21 AA onehot + 6 torsion)
+  d_lig_in:       17      # ligand atom feature dimension
+  d_prot:         256     # protein encoder hidden dim
+  d_lig:          128     # ligand encoder hidden dim
+  d_time:         256     # sinusoidal time embedding dim
+  n_ipa:          4       # IPA blocks in protein encoder
+  n_lig_layers:   3       # self-attention layers in ligand encoder
+  n_cross_layers: 4       # bidirectional cross-attention layers
+  n_heads_prot:   8
+  n_heads_lig:    4
+  n_heads_cross:  8
+  n_rbf:          16      # radial basis functions for distance bias
+  rbf_cutoff:     20.0    # Å
+  dropout:        0.1
+
+diffusion:
+  num_steps:       200
+  schedule_type:   cosine
+  sigma_r_min:     0.02   # SO(3) rotation noise
+  sigma_r_max:     1.5
+  sigma_t_min:     0.1    # Cα translation noise (Å)
+  sigma_t_max:     20.0
+  ligand_sigma_min: 0.1   # Ligand coordinate noise (Å)
+  ligand_sigma_max: 10.0
+
+data:
+  max_residues: 512
+
+training:
+  n_epochs:      100
+  batch_size:    4
+  num_workers:   4
+  lr:            3.0e-4
+  weight_decay:  1.0e-4
+  grad_clip:     1.0
+  lambda_R:      1.0     # rotation score loss weight
+  lambda_tr:     0.5     # translation score loss weight
+  lambda_x:      1.0     # ligand score loss weight
