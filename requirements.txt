@@ -1,0 +1,43 @@
+# Core deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# SE(3) equivariant networks
+e3nn>=0.5.1
+
+# Tensor utilities
+einops>=0.7.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.10.0
+
+# CuPy for CUDA-native ODE integration (install matching your CUDA version)
+# cupy-cuda11x  # for CUDA 11.x
+# cupy-cuda12x  # for CUDA 12.x
+cupy-cuda12x>=12.0.0
+
+# Structural biology
+biopython>=1.81
+rdkit>=2023.3.1
+
+# Data handling
+pandas>=2.0.0
+h5py>=3.9.0
+
+# Cython for rotamer sampler
+cython>=3.0.0
+
+# Training utilities
+wandb>=0.15.0
+tqdm>=4.65.0
+PyYAML>=6.0
+omegaconf>=2.3.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Visualization (optional)
+py3dmol>=2.0.0
+matplotlib>=3.7.0
